@@ -58,7 +58,7 @@ params_list = [params1, params2, params3, params4]
 ### Tests
 
 extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).streamflow
-d
+
 sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
 
 sdf2 = hunt1999(time1, trans, big_s, stream_k, stream_thick, stream_width, sep_distance)
@@ -131,39 +131,3 @@ sd_ratio = self.calc_sd_ratio(n_days, 'theis_1941')
 sd_ratios = self.calc_sd_ratios(n_days)
 
 sd_rates = self.calc_sd_extraction(extraction)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
