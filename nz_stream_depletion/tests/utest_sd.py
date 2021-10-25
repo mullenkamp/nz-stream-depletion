@@ -59,75 +59,75 @@ params_list = [params1, params2, params3, params4]
 
 extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).streamflow
 
-sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
+# sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
 
-sdf2 = hunt1999(time1, trans, big_s, stream_k, stream_thick, stream_width, sep_distance)
+# sdf2 = hunt1999(time1, trans, big_s, stream_k, stream_thick, stream_width, sep_distance)
 
-sdf3 = hunt2003(time1, trans, big_s, tard_k, tard_thick, tard_sy, stream_k, stream_thick, stream_width, sep_distance)
-
-
-
-
-sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
-sdf2 = theis_jenkins(time2, trans, big_s, sep_distance)
-
-sdf_list = []
-
-for i in range(30):
-    sdf1 = theis_jenkins(i+1, trans, big_s, sep_distance)
-    sdf_list.extend([sdf1])
-
-
-np.diff(sdf_list)
-
-sdf_list = []
-
-for i in range(30):
-    sdf1 = hunt2003(i+1, trans, big_s, 0, 1, 1, stream_cond, sep_distance)
-    sdf_list.extend([sdf1])
-
-
-diff1 = np.diff([0] + sdf_list)
-
-diff2 = pd.Series(list(diff1), index=list(range(1, 31)))
-
-times = list(range(1, 151))
-
-tj1 = np.vectorize(theis_jenkins)
-
-sdf3 = tj1(times, trans, big_s, sep_distance)
+# sdf3 = hunt2003(time1, trans, big_s, tard_k, tard_thick, tard_sy, stream_k, stream_thick, stream_width, sep_distance)
 
 
 
-def tj2(times, trans, big_s, sep_distance):
-    """
 
-    """
-    sdf_list = []
+# sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
+# sdf2 = theis_jenkins(time2, trans, big_s, sep_distance)
 
-    for i in times:
-        sdf1 = theis_jenkins(i+1, trans, big_s, sep_distance)
-        sdf_list.extend([sdf1])
+# sdf_list = []
 
-    return np.array(sdf_list)
+# for i in range(30):
+#     sdf1 = theis_jenkins(i+1, trans, big_s, sep_distance)
+#     sdf_list.extend([sdf1])
 
 
-sdf4 = tj2(times, trans, big_s, sep_distance)
+# np.diff(sdf_list)
+
+# sdf_list = []
+
+# for i in range(30):
+#     sdf1 = hunt2003(i+1, trans, big_s, 0, 1, 1, stream_cond, sep_distance)
+#     sdf_list.extend([sdf1])
 
 
-diff1 = np.diff([0] + sdf4)
+# diff1 = np.diff([0] + sdf_list)
 
-diff2 = pd.Series(list(diff1), index=times)
+# diff2 = pd.Series(list(diff1), index=list(range(1, 31)))
+
+# times = list(range(1, 151))
+
+# tj1 = np.vectorize(theis_jenkins)
+
+# sdf3 = tj1(times, trans, big_s, sep_distance)
 
 
 
-wl1 = ward_lough2011(150, trans1, s1, trans, big_s, tard_k, tard_thick, stream_k, stream_thick, stream_width, sep_distance)
+# def tj2(times, trans, big_s, sep_distance):
+#     """
+
+#     """
+#     sdf_list = []
+
+#     for i in times:
+#         sdf1 = theis_jenkins(i+1, trans, big_s, sep_distance)
+#         sdf_list.extend([sdf1])
+
+#     return np.array(sdf_list)
 
 
-self = SD()
-avail = self.load_aquifer_data(**params4)
+# sdf4 = tj2(times, trans, big_s, sep_distance)
 
-sd_ratio = self.calc_sd_ratio(n_days, 'theis_1941')
-sd_ratios = self.calc_sd_ratios(n_days)
 
-sd_rates = self.calc_sd_extraction(extraction)
+# diff1 = np.diff([0] + sdf4)
+
+# diff2 = pd.Series(list(diff1), index=times)
+
+
+
+# wl1 = ward_lough2011(150, trans1, s1, trans, big_s, tard_k, tard_thick, stream_k, stream_thick, stream_width, sep_distance)
+
+
+# self = SD()
+# avail = self.load_aquifer_data(**params4)
+
+# sd_ratio = self.calc_sd_ratio(n_days, 'theis_1941')
+# sd_ratios = self.calc_sd_ratios(n_days)
+
+# sd_rates = self.calc_sd_extraction(extraction)
