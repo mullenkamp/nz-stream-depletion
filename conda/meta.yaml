@@ -1,6 +1,6 @@
-{% set name = "nz-rma-permits" %}
-{% set version = "0.0.9" %}
-{% set sha256 = "ac8cb2298ddff9deac06c5e3dbf7bf37cfbb5e86613c2c1484d62e845694514e" %}
+{% set name = "nz-stream-depletion" %}
+{% set version = "0.0.0" %}
+# {% set sha256 = "ac8cb2298ddff9deac06c5e3dbf7bf37cfbb5e86613c2c1484d62e845694514e" %}
 
 # sha256 is the prefered checksum -- you can get it for a file with:
 #  `openssl sha256 <file name>`.
@@ -17,7 +17,7 @@ source:
   # If getting the source from GitHub remove the line above
   # uncomment the line below and modify as needed
   # url: https://github.com/simplejson/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  # sha256: {{ sha256 }}
 
 build:
   # Uncomment the following line if the package is pure python and the recipe is exactly the same for all platforms.
@@ -36,19 +36,18 @@ requirements:
     - setuptools
   run:
     - python>=3.8
-    - gistools
-    - tethys-data-models
-    - geojson
+    - scipy
+    - pandas
 
 test:
   imports:
-    - nzpermits
+    - nz_stream_depletion
 
 about:
-  home: https://github.com/mullenkamp/nz-rma-permits
+  home: https://github.com/mullenkamp/nz-stream-depletion
   license: Apache License 2.0
   license_family: APACHE
-  summary: Functions to process NZ RMA permiting data
+  summary: Functions to calculate stream depletion using analytical solutions
   description: ""
   doc_url: ''
   dev_url: ''

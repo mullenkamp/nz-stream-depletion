@@ -14,8 +14,8 @@ import pandas as pd
 ### Parameters
 
 # Pumped aquifer
-trans = 500 # m/d
-big_s = 0.05
+pump_aq_trans = 1000 # m/d
+pump_aq_s = 0.1
 
 # Well
 pump_q = 50 # l/s
@@ -24,7 +24,7 @@ sep_distance = 500 # m
 time1 = 6 # days
 time2 = 7 # days
 time1 = 30 # days
-time1 = 150 # days
+n_days = 150 # days
 
 # streambed
 stream_k = 1000 # m/d
@@ -33,22 +33,32 @@ stream_width = 1 # m
 stream_cond = stream_k * stream_thick / stream_width
 
 # aquitard
-tard_k = 0.1 # m/d
-tard_thick = 10 # m
-tard_sy = 0.1
+aqt_k = 0.1 # m/d
+aqt_thick = 10 # m
+aqt_s = 0.1
 
 # upper aquifer
-trans1 = 500
-s1 = 0.05
+upper_aq_trans = 500
+upper_aq_s = 0.05
 
-flow_csv = '/media/nvme1/git/nz-flow-naturalisation/flownat/data/sample_flow.csv'
+flow_csv = '/media/nvme1/git/nz-stream-depletion/nz_stream_depletion/data/sample_flow.csv'
 
+
+params1 = {'pump_aq_trans': pump_aq_trans, 'pump_aq_s': pump_aq_s, 'sep_distance': sep_distance}
+
+params2 = {'pump_aq_trans': pump_aq_trans, 'pump_aq_s': pump_aq_s, 'sep_distance': sep_distance, 'stream_k': stream_k, 'stream_thick': stream_thick, 'stream_width': stream_width}
+
+params3 = {'pump_aq_trans': pump_aq_trans, 'pump_aq_s': pump_aq_s, 'sep_distance': sep_distance, 'stream_k': stream_k, 'stream_thick': stream_thick, 'stream_width': stream_width, 'aqt_k': aqt_k, 'aqt_thick': aqt_thick, 'aqt_s': aqt_s}
+
+params4 = {'pump_aq_trans': pump_aq_trans, 'pump_aq_s': pump_aq_s, 'sep_distance': sep_distance, 'stream_k': stream_k, 'stream_thick': stream_thick, 'stream_width': stream_width, 'aqt_k': aqt_k, 'aqt_thick': aqt_thick, 'aqt_s': aqt_s, 'upper_aq_trans': upper_aq_trans, 'upper_aq_s': upper_aq_s}
+
+params_list = [params1, params2, params3, params4]
 
 #######################################3
 ### Tests
 
 extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).streamflow
-
+d
 sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
 
 sdf2 = hunt1999(time1, trans, big_s, stream_k, stream_thick, stream_width, sep_distance)
@@ -115,9 +125,12 @@ wl1 = ward_lough2011(150, trans1, s1, trans, big_s, tard_k, tard_thick, stream_k
 
 
 self = SD()
-avail = self.load_input_data(100, 100, 0.1)
+avail = self.load_aquifer_data(**params4)
 
-sd_rates = self.calc_sd_extraction_multiple_days(extraction)
+sd_ratio = self.calc_sd_ratio(n_days, 'theis_1941')
+sd_ratios = self.calc_sd_ratios(n_days)
+
+sd_rates = self.calc_sd_extraction(extraction)
 
 
 

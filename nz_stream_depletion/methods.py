@@ -6,7 +6,6 @@ Created on Fri Oct 22 10:10:20 2021
 @author: mike
 """
 import numpy as np
-import pandas as pd
 import math
 from typing import Optional, List, Any, Union
 from scipy.special import erfc, k0

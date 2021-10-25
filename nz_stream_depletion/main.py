@@ -9,7 +9,7 @@ import inspect
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Any, Union
-from methods import theis_1941, hunt_1999, hunt_2003, hunt_2009, ward_lough_2011
+from .methods import theis_1941, hunt_1999, hunt_2003, hunt_2009, ward_lough_2011
 
 ############################################
 ### Parameters
@@ -28,7 +28,7 @@ class SD(object):
 
     def __init__(self):
         """
-
+        Initialise the SD class and provide all stream depletion methods and the input parameter requirements.
         """
         self.all_methods = {m: inspect.getfullargspec(f).args for m, f in method_dict.items()}
         _ = [m.remove('n_days') for k, m in self.all_methods.items()]
@@ -36,7 +36,7 @@ class SD(object):
         pass
 
 
-    def load_input_data(self, sep_distance: int, pump_aq_trans: int, pump_aq_s: float, upper_aq_trans: Optional[int] = None, upper_aq_s: Optional[float] = None, lower_aq_trans: Optional[int] = None, lower_aq_s: Optional[float] = None, aqt_k: Optional[int] = None, aqt_thick: Optional[int] = None, aqt_s: Optional[float] = None, stream_k: Optional[int] = None, stream_thick: Optional[int] = None, stream_width: Optional[int] = None):
+    def load_aquifer_data(self, sep_distance: int, pump_aq_trans: int, pump_aq_s: float, upper_aq_trans: Optional[int] = None, upper_aq_s: Optional[float] = None, lower_aq_trans: Optional[int] = None, lower_aq_s: Optional[float] = None, aqt_k: Optional[int] = None, aqt_thick: Optional[int] = None, aqt_s: Optional[float] = None, stream_k: Optional[int] = None, stream_thick: Optional[int] = None, stream_width: Optional[int] = None):
         """
         This method is where the physical properties of the aquifer(s) and the stream are assigned and processed. The minimum required data includes the sep_distance, pump_aq_trans, and the pump_aq_s. It will determine which stream depletion methods are available based on the input data.
 
@@ -102,9 +102,9 @@ class SD(object):
         return m
 
 
-    def calc_sd_single_day(self, n_days: int, method: Optional[str] = None):
+    def calc_sd_ratio(self, n_days: int, method: Optional[str] = None):
         """
-        Calculate the stream depletion ratio for a specific number of days for a specific method. If no method is provided, it will choose the highest ranking method based on the available methods.
+        Calculate the stream depletion ratio for a specific number of pumping days for a specific method. If no method is provided, it will choose the highest ranking method based on the available methods.
 
         Parameters
         ----------
@@ -120,8 +120,10 @@ class SD(object):
         ## Select the method
         m = self._select_method(method)
 
+        required_params = self.all_methods[m]
+
         ## Calc the SD
-        params = self.params.copy()
+        params = {p: v for p, v in self.params.items() if p in required_params}
         params['n_days'] = n_days
 
         sd_ratio = method_dict[m](**params)
@@ -129,9 +131,9 @@ class SD(object):
         return sd_ratio
 
 
-    def calc_sd_multiple_days(self, n_days: int, method: Optional[str] = None):
+    def calc_sd_ratios(self, n_days: int, method: Optional[str] = None):
         """
-        Calculate the stream depletion ratio for all days up to the n_days for a specific method. If no method is provided, it will choose the highest ranking method based on the available methods.
+        Calculate the stream depletion ratios for all pumping days up to the n_days for a specific method. If no method is provided, it will choose the highest ranking method based on the available methods.
 
         Parameters
         ----------
@@ -147,12 +149,15 @@ class SD(object):
         ## Select the method
         m = self._select_method(method)
 
+        required_params = self.all_methods[m]
+
         ## Calc the SD
         days = range(1, n_days+1)
 
+        params = {p: v for p, v in self.params.items() if p in required_params}
+
         sd_ratios = []
         for t in days:
-            params = self.params.copy()
             params['n_days'] = t
 
             sd_ratio = method_dict[m](**params)
@@ -162,14 +167,14 @@ class SD(object):
         return sd_ratios
 
 
-    def calc_sd_extraction_multiple_days(self, extraction: pd.Series, method: Optional[str] = None):
+    def calc_sd_extraction(self, extraction: pd.Series, method: Optional[str] = None):
         """
         Calculate the stream depleting extraction for all days in the extraction time series for a specific method. If no method is provided, it will choose the highest ranking method based on the available methods.
 
         Parameters
         ----------
         extraction : pd.Series
-            The extraction time series. It must contain a pd.DatetimeIndex. If the series is irregular, it will make it regular and pad the missing times with zero.
+            The extraction time series. It must contain a pd.DatetimeIndex. If the series is irregular, it will make it regular and pad the missing times with zero. Currently, only daily data is allowed as input.
         method : str or None
             The stream depletion method to use. It must be one of the available methods based on the input data. None will select the highest ranking method based on the available methods.
 
@@ -185,7 +190,7 @@ class SD(object):
         n_days1 = len(extract1)
 
         ## Calc the SD
-        sd_ratios = np.array(self.calc_sd_multiple_days(n_days1, method))
+        sd_ratios = np.array(self.calc_sd_ratios(n_days1, method))
 
         ## Make diff arrays
         extract2 = np.diff(extract1.values, prepend=0)

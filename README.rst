@@ -1,7 +1,7 @@
 nz-stream-depletion
 ==================================
 
-This git repository contains misc functions to process NZ water permit data.
+This git repository contains functions for calculating the stream depletion from a pumping well.
 
 
 https://api.ecan.govt.nz/TrimPublicAPI/documents/download/3027564
