@@ -1,7 +1,7 @@
-nz-stream-depletion
+nz-stream-depletion resources
 ==================================
 
-This git repository contains misc functions to process NZ water permit data.
+This folder contains a bunch of resources related to the stream depletion calcs.
 
 
 https://api.ecan.govt.nz/TrimPublicAPI/documents/download/3027564
