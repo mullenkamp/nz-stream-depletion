@@ -9,7 +9,10 @@ A very good review of the various stream depletion solutions can be found in Bru
 
 Input aquifer (and stream) parameters
 -------------------------------------
-All methods have aquifer and stream input parameter requirements. This section will list all of the input parameter names used in the python package with a description of what they mean (glossary)::
+All methods have aquifer and stream input parameter requirements. This section will list all of the input parameter names used in the python package with a description of what they mean (glossary):
+
+
+.. code-block::
 
 	sep_distance : int
       The separation distance from the pumped well to the stream.
@@ -43,6 +46,11 @@ Theis 1941
 ----------
 The Theis 1941 solution labeled **theis_1941** in the python package represents a straight river fully penetrating a homogeneous, isotropic aquifer of semi-infinite extent, which can be either confined or unconfined.
 
+
+.. figure:: img/theis_1941.png
+
+	 The conceptual model diagram of Theis 1941.
+
 input parameters
 ~~~~~~~~~~~~~~~~
 	- sep_distance
@@ -50,14 +58,14 @@ input parameters
 	- pump_aq_s
 
 
-.. figure:: img/theis_1941.png
-
-	 The conceptual model diagram of Theis 1941.
-
-
 Hunt 1999
 ---------
 The Hunt 1999 solution labeled **hunt_1999** in the python package represents a stream that partially penetrates an aquifer extending to infinity in all horizontal directions. Where the aquifer is again homogeneous and isotropic with a semi-infinite extent.
+
+
+.. figure:: img/hunt_1999.png
+
+	 The conceptual model diagram of Hunt 1999.
 
 input parameters
 ~~~~~~~~~~~~~~~~
@@ -69,14 +77,14 @@ input parameters
 	- stream_width
 
 
-.. figure:: img/hunt_1999.png
-
-	 The conceptual model diagram of Hunt 1999.
-
-
 Hunt 2003
 ---------
 The Hunt 2003 solution labeled **hunt_2003** in the python package represents a similar conceptual model as the Hunt 1999 except that the pumped aquifer underlays an aquitard containing a free surface.
+
+
+.. figure:: img/hunt_2003.png
+
+	 The conceptual model diagram of Hunt 2003.
 
 input parameters
 ~~~~~~~~~~~~~~~~
@@ -91,14 +99,14 @@ input parameters
 	- aqt_s
 
 
-.. figure:: img/hunt_2003.png
-
-	 The conceptual model diagram of Hunt 2003.
-
-
 Hunt 2009
 ---------
 The Hunt 2009 solution labeled **hunt_2009** in the python package represents a similar conceptual model as the Hunt 1999 except that the pumped aquifer overlays an aquitard and a second unpumped confined aquifer.
+
+
+.. figure:: img/hunt_2009.png
+
+	 The conceptual model diagram of Hunt 2009.
 
 input parameters
 ~~~~~~~~~~~~~~~~
@@ -114,14 +122,14 @@ input parameters
 	- lower_aq_s
 
 
-.. figure:: img/hunt_2009.png
-
-	 The conceptual model diagram of Hunt 2009.
-
-
 Ward and Lough 2011
 -------------------
 The Ward and Lough 2011 solution labeled **ward_lough_2011** in the python package represents a similar conceptual model as the Hunt 2009 except that the pumped aquifer is now the lower confined aquifer.
+
+
+.. figure:: img/ward_lough_2011.png
+
+	The conceptual model diagram of Ward and Lough 2011.
 
 input parameters
 ~~~~~~~~~~~~~~~~
@@ -135,8 +143,3 @@ input parameters
 	- aqt_thick
 	- upper_aq_trans
 	- upper_aq_s
-
-
-.. figure:: img/ward_lough_2011.png
-
-	 The conceptual model diagram of Ward and Lough 2011.
