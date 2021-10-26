@@ -134,7 +134,7 @@ Once the input parameters have been loaded, you can calculate the stream depleti
   print(sd_ratios)
 
 
-The last bit of functionality allows you to take a time series of extraction (pumping) data and determine the amount that is stream depleting over the entire record.
+The last bit of functionality allows you to take a time series of extraction (pumping) data and determine the amount that is stream depleting over the entire record. The application of these stream depletion methods on variable pumping rates over time uses the `superposition principle <https://en.wikipedia.org/wiki/Superposition_principle>`_.
 
 
 .. ipython:: python
