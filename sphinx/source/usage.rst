@@ -126,8 +126,8 @@ Once the input parameters have been loaded, you can calculate the stream depleti
 
   available = sd.load_aquifer_data(**params2)
 
-  sd_ratio = sd.sd_ratio(7)
-  sd_ratios = sd.sd_ratios(7)
+  sd_ratio = sd.calc_sd_ratio(7)
+  sd_ratios = sd.calc_sd_ratios(7)
 
   print(available)
   print(sd_ratio)
