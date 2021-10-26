@@ -129,7 +129,7 @@ The Ward and Lough 2011 solution labeled **ward_lough_2011** in the python packa
 
 .. figure:: img/ward_lough_2011.png
 
-	The conceptual model diagram of Ward and Lough 2011.
+	 The conceptual model diagram of Ward and Lough 2011.
 
 input parameters
 ~~~~~~~~~~~~~~~~
