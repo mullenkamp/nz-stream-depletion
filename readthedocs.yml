@@ -1,0 +1,13 @@
+version: 2
+formats: all
+sphinx:
+  configuration: sphinx/source/conf.py
+conda:
+    environment: sphinx/env.yml
+python:
+   version: 3.8
+   install:
+      - method: pip
+        path: .
+      - method: setuptools
+        path: .
