@@ -62,7 +62,7 @@ params_list = [params1, params2, params3, params4]
 #######################################3
 ### Tests
 
-extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).streamflow
+extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).flow
 
 
 @pytest.mark.parametrize('params', params_list)
@@ -76,39 +76,3 @@ def test_sd(params):
     sd_rates = self.calc_sd_extraction(extraction)
 
     assert sd_rates.sum() > 1000
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
