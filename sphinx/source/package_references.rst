@@ -14,11 +14,11 @@ Input aquifer parameters
 stream depletion calcs
 ------------------------
 
-.. automethod:: nz_stream_depletion.SD.sd_ratio
+.. automethod:: nz_stream_depletion.SD.calc_sd_ratio
 
-.. automethod:: nz_stream_depletion.SD.sd_ratios
+.. automethod:: nz_stream_depletion.SD.calc_sd_ratios
 
-.. automethod:: nz_stream_depletion.SD.sd_rates
+.. automethod:: nz_stream_depletion.SD.calc_sd_extraction
 
 API Pages
 ---------
