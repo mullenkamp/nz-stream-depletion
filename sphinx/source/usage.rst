@@ -149,6 +149,6 @@ The last bit of functionality allows you to take a time series of extraction (pu
 
   available = sd.load_aquifer_data(**params2)
 
-  sd_rates = self.calc_sd_extraction(extraction)
+  sd_rates = sd.calc_sd_extraction(extraction)
 
   print(sd_rates)
