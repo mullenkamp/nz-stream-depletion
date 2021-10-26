@@ -115,7 +115,7 @@ Then we need to load the input aquifer parameters. The available methods attribu
   print(available)
 
 
-Once the input parameters have been loaded, you can calculate the stream depletion ratios using either sd.sd_ratio for a specific number of pumping days (n_days) or sd.sd_ratios for all of the ratios up to the pumping days. It can be helpful in certain coding circumstances to put the input parameters into a dictionary before passing them to the SD class.
+Once the input parameters have been loaded, you can calculate the stream depletion ratios using either sd.calc_sd_ratio for a specific number of pumping days (n_days) or sd.calc_sd_ratios for all of the ratios up to the pumping days. It can be helpful in certain coding circumstances to put the input parameters into a dictionary before passing them to the SD class.
 
 
 .. ipython:: python
