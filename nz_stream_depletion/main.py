@@ -36,7 +36,7 @@ class SD(object):
         pass
 
 
-    def load_aquifer_data(self, sep_distance: int, pump_aq_trans: int, pump_aq_s: float, upper_aq_trans: Optional[int] = None, upper_aq_s: Optional[float] = None, lower_aq_trans: Optional[int] = None, lower_aq_s: Optional[float] = None, aqt_k: Optional[int] = None, aqt_thick: Optional[int] = None, aqt_s: Optional[float] = None, stream_k: Optional[int] = None, stream_thick: Optional[int] = None, stream_width: Optional[int] = None):
+    def load_aquifer_data(self, sep_distance: int, pump_aq_trans: int, pump_aq_s: float, upper_aq_trans: Optional[int] = None, upper_aq_s: Optional[float] = None, lower_aq_trans: Optional[int] = None, lower_aq_s: Optional[float] = None, aqt_k: Optional[float] = None, aqt_thick: Optional[int] = None, aqt_s: Optional[float] = None, stream_k: Optional[float] = None, stream_thick: Optional[int] = None, stream_width: Optional[int] = None):
         """
         This method is where the physical properties of the aquifer(s) and the stream are assigned and processed. The minimum required data includes the sep_distance, pump_aq_trans, and the pump_aq_s. It will determine which stream depletion methods are available based on the input data.
 
@@ -56,13 +56,13 @@ class SD(object):
             The confined aquifer transmissivity (m2/day).
         lower_aq_s : float
             The storage coefficient (specific storage) of the confined aquifer.
-        aqt_k : int
+        aqt_k : int, float
             The aquitard hydraulic conductivity (m/day).
         aqt_s : float
             The aquitard storage coefficient.
         aqt_thick : int
             The aquitard vertical thickness (m).
-        stream_k : int
+        stream_k : int, float
             Streambed hydraulic conductivity (m/day).
         stream_thick : int
             The streambed vertical thickness (m).
@@ -208,62 +208,3 @@ class SD(object):
         sd_rate3 = pd.Series(combo[:len(extract2)], index=extract1.index)
 
         return sd_rate3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

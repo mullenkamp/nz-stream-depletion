@@ -1,5 +1,5 @@
 {% set name = "nz-stream-depletion" %}
-{% set version = "0.0.0" %}
+{% set version = "0.0.2" %}
 # {% set sha256 = "ac8cb2298ddff9deac06c5e3dbf7bf37cfbb5e86613c2c1484d62e845694514e" %}
 
 # sha256 is the prefered checksum -- you can get it for a file with:

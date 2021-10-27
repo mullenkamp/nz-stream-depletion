@@ -208,7 +208,7 @@ def hunt_1999(n_days, pump_aq_trans, pump_aq_s, stream_k, stream_thick, stream_w
         The pumped aquifer transmissivity (m2/day).
     pump_aq_s : float
         The storage coefficient of the pumped aquifer.
-    stream_k : int
+    stream_k : int, float
         Streambed hydraulic conductivity (m/day).
     stream_thick : int
         The streambed vertical thickness (m).
@@ -243,13 +243,13 @@ def hunt_2003(n_days, pump_aq_trans, pump_aq_s, aqt_k, aqt_thick, aqt_s, stream_
         The pumped aquifer transmissivity (m2/day).
     pump_aq_s : float
         The storage coefficient of the pumped aquifer.
-    aqt_k : int
+    aqt_k : int, float
         The aquitard hydraulic conductivity (m/day).
     aqt_thick : int
         The aquitard vertical thickness (m).
     aqt_s : float
         The aquitard storage coefficient.
-    stream_k : int
+    stream_k : int, float
         Streambed hydraulic conductivity (m/day).
     stream_thick : int
         The streambed vertical thickness (m).
@@ -290,11 +290,11 @@ def hunt_2009(n_days, pump_aq_trans, pump_aq_s, lower_aq_trans, lower_aq_s, aqt_
         The confined aquifer transmissivity (m2/day).
     lower_aq_s : float
         The storage coefficient (specific storage) of the confined aquifer.
-    aqt_k : int
+    aqt_k : int, float
         The aquitard hydraulic conductivity (m/day).
     aqt_thick : int
         The aquitard vertical thickness (m).
-    stream_k : int
+    stream_k : int, float
         Streambed hydraulic conductivity (m/day).
     stream_thick : int
         The streambed vertical thickness (m).
@@ -337,11 +337,11 @@ def ward_lough_2011(n_days, pump_aq_trans, pump_aq_s, upper_aq_trans, upper_aq_s
         The surficial aquifer transmissivity (m2/day).
     upper_aq_s : float
         The storage coefficient of the surficial aquifer.
-    aqt_k : int
+    aqt_k : int, float
         The aquitard hydraulic conductivity (m/day).
     aqt_thick : int
         The aquitard vertical thickness (m).
-    stream_k : int
+    stream_k : int, float
         Streambed hydraulic conductivity (m/day).
     stream_thick : int
         The streambed vertical thickness (m).
