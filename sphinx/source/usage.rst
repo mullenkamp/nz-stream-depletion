@@ -6,7 +6,7 @@ This section will describe how to use the nz-stream-depletion package.
 
 The SD class
 -------------
-The SD class in the nz-stream-depletion package provides access to all of the stream depletion methods withouthaving to specify each function. You just feed in the appropriate input parameters and the SD will use the most appropriate method given the input parameters.
+The SD class in the nz-stream-depletion package provides access to all of the stream depletion methods without having to specify each function. You just feed in the appropriate input parameters and the SD will use the most appropriate method given the input parameters.
 
 First we need to import the package and define some of those input aquifer parameters.
 
@@ -93,7 +93,7 @@ First we need to import the package and define some of those input aquifer param
   extract_csv = 'https://raw.githubusercontent.com/mullenkamp/nz-stream-depletion/main/nz_stream_depletion/data/sample_flow.csv'
 
 
-Then we need to initialize the SD class. Once the SD class is initialized, we can take a look at the all_methods attribute to see all of the emthods and the parameter requirements.
+Then we need to initialize the SD class. Once the SD class is initialized, we can take a look at the all_methods attribute to see all of the methods and the parameter requirements.
 
 
 .. ipython:: python
