@@ -1,0 +1,194 @@
+[project]
+name = "nz-stream-depletion"
+authors = [
+  { name = "Mike", email = "mullenkamp1@gmail.com" }
+]
+description = "Functions to calculate stream depletion using analytical solutions"
+readme = "README.rst"
+dynamic = ["version"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+]
+requires-python = ">=3.8"
+dependencies = [
+  'pandas<2', 
+  'scipy',
+  'numpy<2'
+]
+
+# [tool.ruff]
+# target-version = "py310"
+# extend-select = ["I", "TRY", "UP"]
+
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+# [tool.hatch.version]
+# source = "regex_commit"
+# commit_extra_args = ["-e"]
+# path = "npsfm/__init__.py"
+
+[tool.hatch.envs.default]
+python = "3.10"
+dependencies = [
+    "spyder-kernels==2.4",
+    "black",
+    "mypy",
+    "ruff",
+    "pytest",
+    "pytest-cov",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    
+]
+
+[tool.hatch.version]
+path = "nz_stream_depletion/__init__.py"
+
+[[tool.hatch.envs.all.matrix]]
+python = ['3.9', '3.10', '3.11']
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "black>=23.1.0",
+  "mypy>=1.0.0",
+  "ruff>=0.0.243",
+]
+[tool.hatch.envs.lint.scripts]
+typing = "mypy --install-types --non-interactive {args:src/nz_stream_depletion tests}"
+style = [
+  "ruff {args:.}",
+  "black --check --diff {args:.}",
+]
+fmt = [
+  "black {args:.}",
+  "ruff --fix {args:.}",
+  "style",
+]
+all = [
+  "style",
+  "typing",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+
+[tool.black]
+target-version = ["py37"]
+line-length = 120
+skip-string-normalization = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+select = [
+  "A",
+  "ARG",
+  "B",
+  "C",
+  "DTZ",
+  "E",
+  "EM",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "Q",
+  "RUF",
+  "S",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105", "S106", "S107",
+  # Ignore complexity
+  "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["nz_stream_depletion"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
+
+[tool.coverage.run]
+source_pkgs = ["nz_stream_depletion", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/nz_stream_depletion/__about__.py",
+]
+
+[tool.coverage.paths]
+nz_stream_depletion = ["src/nz_stream_depletion", "*/nz_stream_depletion/src/nz_stream_depletion"]
+tests = ["tests", "*/nz_stream_depletion/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[project.urls]
+Documentation = "https://github.com/mullenkamp/nz-stream-depletion"
+Source = "https://github.com/mullenkamp/nz-stream-depletion"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/nz_stream_depletion",
+]
+exclude = [
+  '/nz_stream_depletion/data',
+  '/nz_stream_depletion/tests'
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "/nz_stream_depletion",
+]
+exclude = [
+  '/nz_stream_depletion/data',
+  '/nz_stream_depletion/tests'
+]

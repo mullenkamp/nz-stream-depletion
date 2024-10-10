@@ -5,7 +5,7 @@ Created on Tue Oct 19 10:01:15 2021
 
 @author: mike
 """
-
+from nz_stream_depletion import SD
 # from . import main
 import numpy as np
 import pandas as pd
@@ -14,22 +14,22 @@ import pandas as pd
 ### Parameters
 
 # Pumped aquifer
-pump_aq_trans = 1000 # m/d
+pump_aq_trans = 3051 # m/d
 pump_aq_s = 0.1
 
 # Well
 pump_q = 50 # l/s
-sep_distance = 500 # m
+sep_distance = 3820 # m
 
-time1 = 6 # days
-time2 = 7 # days
-time1 = 30 # days
-n_days = 150 # days
+# time1 = 6 # days
+# time2 = 7 # days
+time1 = 90 # days
+n_days = 90 # days
 
 # streambed
-stream_k = 1000 # m/d
+stream_k = 1 # m/d
 stream_thick = 1 # m
-stream_width = 1 # m
+stream_width = 50 # m
 stream_cond = stream_k * stream_thick / stream_width
 
 # aquitard
@@ -58,6 +58,11 @@ params_list = [params1, params2, params3, params4]
 ### Tests
 
 extraction = pd.read_csv(flow_csv, index_col='time', parse_dates=True, infer_datetime_format=True, dayfirst=True).streamflow
+
+self = SD()
+avail = self.load_aquifer_data(**params2)
+
+sd_ratio = self.calc_sd_ratio(n_days)
 
 # sdf1 = theis_jenkins(time1, trans, big_s, sep_distance)
 
