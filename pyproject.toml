@@ -176,3 +176,16 @@ Source = "https://github.com/mullenkamp/nz-stream-depletion"
 include = [
     "/nz_stream_depletion",
 ]
+exclude = [
+  '/nz_stream_depletion/data',
+  '/nz_stream_depletion/tests'
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "/nz_stream_depletion",
+]
+exclude = [
+  '/nz_stream_depletion/data',
+  '/nz_stream_depletion/tests'
+]
