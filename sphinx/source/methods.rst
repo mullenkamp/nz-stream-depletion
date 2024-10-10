@@ -5,7 +5,7 @@ Background
 -----------
 All of these stream depletion methods are derivations from the fundamental groundwater principles. They have been specifically derived to estimate the ratio of the stream water compared to the surrounding groundwater during pumping of a nearby well. In all of the following conceptual models, they represent simplified representations of the groundwater system to ensure that the input requirements are minimised. The complexity of the conceptual groundwater model increases with the input requirements. This page describes the methods in a sequence from the most simple to the most complex. The names used in the python package will be labeled in **bold** for reference.
 
-A very good review of the various stream depletion solutions can be found in Bruce Hunt's `Review of Stream Depletion Solutions, Behavior, and Calculations <https://drive.google.com/file/d/1rgAABNaNju-RWdKM9K-50s4R87zrMpav/view?usp=sharing>`_. Many of the following diagrams come from this paper.
+A very good review of the various stream depletion solutions can be found in Bruce Hunt's `Review of Stream Depletion Solutions, Behavior, and Calculations <https://drive.google.com/file/d/17TxmLKOWE-lgpKKs8jBKX-S-Ss8mQ-47/view?usp=sharing>`_. Many of the following diagrams come from this paper.
 
 Input aquifer (and stream) parameters
 -------------------------------------
