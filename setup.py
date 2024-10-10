@@ -18,7 +18,7 @@ version = '0.0.2'
 if os.environ.get('READTHEDOCS', False) == 'True':
     INSTALL_REQUIRES = []
 else:
-    INSTALL_REQUIRES = ['scipy', 'pandas']
+    INSTALL_REQUIRES = ['scipy', 'pandas<2']
 
 # Get the long description from the README file
 with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:

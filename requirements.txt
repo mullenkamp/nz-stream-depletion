@@ -1,2 +1,2 @@
 scipy
-pandas
+pandas<2
